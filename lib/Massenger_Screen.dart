@@ -1,7 +1,211 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+class ChatModel {
+  final int id;
+  final String name;
+  final String lastMessage;
+  final String time;
+  final String imageUrl;
+  final Color status;
+  final bool isRead;
+
+  ChatModel({
+    required this.id,
+    required this.name,
+    required this.lastMessage,
+    required this.time,
+    required this.imageUrl,
+    required this.status,
+    required this.isRead,
+  });
+}
+
+
 class MessengerScreen extends StatelessWidget {
+  List<ChatModel> chats = [
+    ChatModel(
+      id: 1,
+      name: 'Ola Mohamed',
+      lastMessage: 'Hey Aya! Did you finish the Flutter project you were working on yesterday?',
+      time: '09:00 AM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/19.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 2,
+      name: 'Amr Khaled',
+      lastMessage: 'Let’s meet at the office around 3 PM.',
+      time: '09:45 AM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/19.jpg',
+      status: Colors.grey,
+      isRead: false,
+    ),
+    ChatModel(
+      id: 3,
+      name: 'Sara Ahmed',
+      lastMessage: 'That’s amazing! I’m really happy for you 🎉',
+      time: '10:15 AM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/3.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 4,
+      name: 'Mohamed Ali',
+      lastMessage: 'Can you send me the report before noon?',
+      time: '11:30 AM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/4.jpg',
+      status: Colors.grey,
+      isRead: false,
+    ),
+    ChatModel(
+      id: 5,
+      name: 'Laila Hassan',
+      lastMessage: 'Sure! I’ll check and get back to you soon.',
+      time: '12:10 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/5.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 6,
+      name: 'Heba Youssef',
+      lastMessage: 'That sounds good, let’s go for it!',
+      time: '12:45 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/6.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 7,
+      name: 'Khaled Mahmoud',
+      lastMessage: 'I’m not sure if it’s the right time to do that.',
+      time: '01:15 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/7.jpg',
+      status: Colors.grey,
+      isRead: false,
+    ),
+    ChatModel(
+      id: 8,
+      name: 'Nour El-Din',
+      lastMessage: 'Let me know when you’re free.',
+      time: '02:00 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/8.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 9,
+      name: 'Omar Tarek',
+      lastMessage: 'I just emailed you the design.',
+      time: '03:10 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/9.jpg',
+      status: Colors.grey,
+      isRead: false,
+    ),
+    ChatModel(
+      id: 10,
+      name: 'Reem Mohamed',
+      lastMessage: 'Hahaha that’s so funny 😂',
+      time: '04:00 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/10.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 11,
+      name: 'Salma Fathy',
+      lastMessage: 'Don’t forget the meeting tomorrow morning!',
+      time: '04:30 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/11.jpg',
+      status: Colors.green,
+      isRead: false,
+    ),
+    ChatModel(
+      id: 12,
+      name: 'Youssef Ibrahim',
+      lastMessage: 'Okay, I’ll send you the link now.',
+      time: '05:00 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/12.jpg',
+      status: Colors.grey,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 13,
+      name: 'Mona Adel',
+      lastMessage: 'The event was really nice yesterday!',
+      time: '05:45 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/13.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 14,
+      name: 'Ahmed Saeed',
+      lastMessage: 'Can we postpone our call?',
+      time: '06:10 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/14.jpg',
+      status: Colors.grey,
+      isRead: false,
+    ),
+    ChatModel(
+      id: 15,
+      name: 'Marwa Hany',
+      lastMessage: 'It’s already done, check your inbox.',
+      time: '06:40 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/15.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 16,
+      name: 'Hassan Gamal',
+      lastMessage: 'Don’t worry, I’ll handle it.',
+      time: '07:05 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/16.jpg',
+      status: Colors.grey,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 17,
+      name: 'Rania Lotfy',
+      lastMessage: 'We should plan a weekend trip soon!',
+      time: '07:30 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/17.jpg',
+      status: Colors.green,
+      isRead: false,
+    ),
+    ChatModel(
+      id: 18,
+      name: 'Mostafa Adel',
+      lastMessage: 'I’ll confirm once I reach home.',
+      time: '08:00 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/18.jpg',
+      status: Colors.grey,
+      isRead: false,
+    ),
+    ChatModel(
+      id: 19,
+      name: 'Nadia Samir',
+      lastMessage: 'I loved your presentation today! Great job 👏',
+      time: '08:20 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/women/19.jpg',
+      status: Colors.green,
+      isRead: true,
+    ),
+    ChatModel(
+      id: 20,
+      name: 'Tamer Magdy',
+      lastMessage: 'Can you share the updated files?',
+      time: '08:45 PM',
+      imageUrl: 'https://randomuser.me/api/portraits/men/20.jpg',
+      status: Colors.grey,
+      isRead: false,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +215,7 @@ class MessengerScreen extends StatelessWidget {
         title: Row(children: [
           CircleAvatar(
             backgroundImage: NetworkImage(
-                'https://expertphotography.b-cdn.net/wp-content/uploads/2018/10/joelvalve-572557-unsplash.jpg'),
+                'https://expertphotography.b-cdn.net/wp-content/uploads/2018/10/joelvalve-57257-unsplash.jpg'),
             radius: 20,
           ),
           SizedBox(width: 10),
@@ -105,7 +309,7 @@ class MessengerScreen extends StatelessWidget {
                       right: 10,
                     ),
                       shrinkWrap: true,
-                      itemBuilder: (context,index)=>bildChatItem(),
+                      itemBuilder: (context,index)=>bildChatItem(chats[index]),
                       separatorBuilder: (context,index)=>SizedBox(height: 20),
                       itemCount: 15,
                       physics: NeverScrollableScrollPhysics(),
@@ -163,13 +367,13 @@ class MessengerScreen extends StatelessWidget {
         ]
     ),
   );
- Widget bildChatItem()=> Row(
+ Widget bildChatItem(ChatModel chat)=> Row(
      children: [
        Stack(
            alignment: AlignmentDirectional.bottomEnd,
            children:[
              CircleAvatar(
-               backgroundImage: NetworkImage('https://tse2.mm.bing.net/th/id/OIP.vnz9yRiL_K_hkeGEEIiBCgAAAA?cb=12&pid=ImgDet&w=467&h=700&rs=1&o=7&rm=3'),
+               backgroundImage: NetworkImage('${chat.imageUrl}'),
                radius: 30,
              ),
              Padding(
@@ -189,7 +393,7 @@ class MessengerScreen extends StatelessWidget {
                ),
                child: CircleAvatar(
                  radius: 7,
-                 backgroundColor: Colors.green,
+                 backgroundColor: chat.status,
                ),
              ),
            ]
@@ -199,7 +403,7 @@ class MessengerScreen extends StatelessWidget {
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [
-             Text('Lina Mohamed Ali',style: TextStyle(
+             Text('${chat.name}',style: TextStyle(
                fontSize: 15,),
                maxLines: 1,
                overflow: TextOverflow.ellipsis,
@@ -207,7 +411,7 @@ class MessengerScreen extends StatelessWidget {
              Row(
                  children: [
                    Expanded(
-                     child: Text('Hello my name is Lina Mohamed , How are you ? ',style: TextStyle(
+                     child: Text('${chat.lastMessage}',style: TextStyle(
                        fontSize: 10,
                      ),
                        maxLines: 1,
@@ -227,7 +431,7 @@ class MessengerScreen extends StatelessWidget {
                      ),
                    ),
                    SizedBox(width: 5),
-                   Text('02:00 pm',style: TextStyle(
+                   Text('${chat.time}',style: TextStyle(
                      fontSize: 10,
                    ),),
                  ]
