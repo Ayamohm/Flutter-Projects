@@ -1,7 +1,8 @@
-import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'BMIResultScreen.dart';
 
 class BMICalculator extends StatefulWidget {
   const BMICalculator({super.key});
@@ -11,9 +12,10 @@ class BMICalculator extends StatefulWidget {
 }
 
 class _BMICalculatorState extends State<BMICalculator> {
-  double height=180;
+  double height=150;
   int age=10;
-  double weight=10;
+  double weight=50;
+  bool ismale=true;
 
   @override
   Widget build(BuildContext context) {
@@ -35,36 +37,50 @@ class _BMICalculatorState extends State<BMICalculator> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Male card
-                      Container(
+                      GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            ismale=true;
+                          });
+                        },
+                        child: Container(
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: ismale?Colors.pinkAccent:Colors.grey[900],
+                              borderRadius: BorderRadius.circular(20),),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children:const [
+                                Icon(Icons.male_rounded,size: 110,color: Colors.white,),
+                                SizedBox(height: 10),
+                                Text('MALE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),)
+                              ],
+                            ),
+                          ),
+                      ),
+
+                      // Female card
+                     GestureDetector(
+                       onTap: (){
+                         setState(() {
+                           ismale=false;
+                         });
+                       },
+                       child: Container(
                           width: 200,
                           decoration: BoxDecoration(
-                            color: Colors.grey[900],
+                            color: !ismale?Colors.pinkAccent:Colors.grey[900],
                             borderRadius: BorderRadius.circular(20),),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children:const [
-                              Icon(Icons.male_rounded,size: 110,color: Colors.white,),
+                              Icon(Icons.female_rounded,size: 100,color: Colors.white,),
                               SizedBox(height: 10),
-                              Text('MALE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),)
+                              Text('FEMALE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),)
                             ],
                           ),
                         ),
-
-                      // Female card
-                     Container(
-                        width: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[900],
-                          borderRadius: BorderRadius.circular(20),),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children:const [
-                            Icon(Icons.female_rounded,size: 100,color: Colors.white,),
-                            SizedBox(height: 10),
-                            Text('FEMALE',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),)
-                          ],
-                        ),
-                      ),
+                     ),
 
                   ],
                 ),
@@ -223,25 +239,33 @@ class _BMICalculatorState extends State<BMICalculator> {
                     ),
                     backgroundColor: Colors.pinkAccent,),
                   onPressed: (){
-                    double bmi = weight / ((height / 100) * (height / 100));
-                    showDialog(
+                    double bmi = weight / ((height / 100)*(height / 100));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>BMIResultScreen(result: bmi,
+                      age: age,
+                      isMale: ismale,)));
+                   /* showDialog(
+                      useSafeArea: true,
+                      barrierDismissible: false,
                       context: context,
                       builder: (context) =>AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
                         backgroundColor: Colors.grey[900],
-                        title: Text('BMI Result',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.white),),
-                        content: Text('Your BMI is ${bmi.toStringAsFixed(2)}',style: TextStyle(fontSize:20,color: Colors.pinkAccent),),
+                        title: Text('BMI Result',style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold,color: Colors.white),),
+                        content: Text('Your BMI is ${bmi.toStringAsFixed(2)}',style: TextStyle(fontSize:25,color: Colors.pinkAccent),),
                         actions: [
                           TextButton(
                             onPressed: (){
                               Navigator.pop(context);
                             },
-                            child: Text('OK',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
+                            child: Text('OK',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),),
 
                           )
                         ],
 
                       )
-                    );
+                    );*/
                 },
                 child: Text('Calculate',style: TextStyle(
                     fontSize: 30,
@@ -258,3 +282,5 @@ class _BMICalculatorState extends State<BMICalculator> {
     );
   }
 }
+
+
