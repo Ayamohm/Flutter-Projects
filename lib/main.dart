@@ -4,6 +4,7 @@ import 'package:app_test/Massenger_Screen.dart';
 import 'package:app_test/UsersScreen.dart';
 import 'package:flutter/material.dart';
 
+import 'Calculator_Screen.dart';
 import 'Counter_Screen.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-        home:CounterScreen()
+        home:BMICalculator()
 
     );
   }
