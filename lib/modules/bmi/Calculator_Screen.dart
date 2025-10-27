@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'BMIResultScreen.dart';
+import '../bmi_result/BMIResultScreen.dart';
 
 class BMICalculator extends StatefulWidget {
   const BMICalculator({super.key});
